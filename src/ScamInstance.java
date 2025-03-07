@@ -1,10 +1,4 @@
 public class ScamInstance {
-    public enum Category {
-        Phishing,
-        Scamming,
-        Malware,
-        Hacked
-    }
     // I also wanted to do subCategory as an enum, but there are over **FIVE HUNDRED** 
     // I think it was a string input so people just put what they want.
     

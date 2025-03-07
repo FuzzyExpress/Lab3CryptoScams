@@ -1,3 +1,7 @@
+# I used this to get the categories and subcategories from the urls.csv file.
+# I expected it would yeild a reasonable amount of subcategories, but it was over 500.
+# I think it was a string input so people just put what they want.
+
 import csv
 
 main = []
@@ -26,4 +30,4 @@ for s in sub:
 
 file.close()
 out.close()
-            
+

@@ -5,8 +5,7 @@ myetherwallet.cam,http://myetherwallet.cam,Phishing,MyEtherWallet,redirecting to
 coindash.ru,http://coindash.ru,Phishing,Coindash,someone plz check,,CryptoScamDB
 coin-wallet.info,http://coin-wallet.info,Phishing,Coindash,scam wallet,,CryptoScamDB
 etherswap.org,http://etherswap.org,Phishing,Ethereum,,{'ETH': ['0x4cdc1cba0aeb5539f2e0ba158281e67e0e54a9b1']},CryptoScamDB
-xn--mytherwallet-fvb.com,http://xn--mytherwallet-fvb.com,Phishing,MyEtherWallet,"The website doesn't seem to be sending the private key anywhere (chrome dev console)
-Report: https://www.digitalocean.com/company/contact/#abuse",,CryptoScamDB
+xn--mytherwallet-fvb.com,http://xn--mytherwallet-fvb.com,Phishing,MyEtherWallet,"The website doesn't seem to be sending the private key anywhere (chrome dev console)\nReport: https://www.digitalocean.com/company/contact/#abuse",,CryptoScamDB
 myetherwallet.top,http://myetherwallet.top,Phishing,MyEtherWallet,"IP has changed, Microsoft reports site as insecure, Poses as MyEtherWallet Tech Support",,CryptoScamDB
 mvetherwallet.com,http://mvetherwallet.com,Phishing,MyEtherWallet,Bans people that use whitehat,,CryptoScamDB
 my-etherwallet.com,http://my-etherwallet.com,Phishing,ClassicEtherWallet,"phishing (linked to *.ether-api.com). did not 404.,MEW Deployed. redirects to classic ether wallet",,CryptoScamDB
