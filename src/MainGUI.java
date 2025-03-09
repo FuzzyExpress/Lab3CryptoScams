@@ -22,7 +22,7 @@ public class MainGUI extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         
         // Add panels to tabs
-        tabbedPane.addTab("Table", new TablePanel());
+        tabbedPane.addTab("Table", new TablePanel(scamList));
         tabbedPane.addTab("Statistics", new StatsPanel());
         tabbedPane.addTab("Charts", new ChartPanel());
         tabbedPane.addTab("Details", new DetailsPanel());
