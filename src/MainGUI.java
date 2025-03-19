@@ -8,6 +8,36 @@ public class MainGUI extends JFrame {
         setTitle("Crypto Scam Tracker");
         List<ScamInstance> scamList = LoadData.loadData();
 
+        // Create all panels
+        TablePanel tablePanel = new TablePanel(scamList);
+        
+        // Add placeholder text to empty panels
+        StatsPanel statsPanel = new StatsPanel();
+        statsPanel.add(new JLabel("Statistics Panel"));
+        
+        ChartPanel chartPanel = new ChartPanel();
+        chartPanel.add(new JLabel("Chart Panel"));
+        
+        DetailsPanel detailsPanel = new DetailsPanel();
+        detailsPanel.add(new JLabel("Details Panel"));
+
+        // Create left side split (table and details)
+        JSplitPane leftSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+                tablePanel, detailsPanel);
+        leftSplit.setResizeWeight(0.75); // 75% top, 25% bottom
+
+        // Create right side split (chart and stats)
+        JSplitPane rightSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+                chartPanel, statsPanel);
+        rightSplit.setResizeWeight(0.5); // 50% top, 50% bottom
+
+        // Create main split (left and right panels)
+        JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                leftSplit, rightSplit);
+        mainSplit.setResizeWeight(0.7); // 70% left, 30% right
+
+        // Add to frame
+        add(mainSplit);
 
         Dimension windowSize = new Dimension(800, 600);
         setPreferredSize(windowSize);
@@ -18,18 +48,6 @@ public class MainGUI extends JFrame {
                 (Toolkit.getDefaultToolkit().getScreenSize().height / 3) - (int) (windowSize.getHeight() / 2)
         );
 
-        // Create tabbed pane
-        JTabbedPane tabbedPane = new JTabbedPane();
-        
-        // Add panels to tabs
-        tabbedPane.addTab("Table", new TablePanel(scamList));
-        tabbedPane.addTab("Statistics", new StatsPanel());
-        tabbedPane.addTab("Charts", new ChartPanel());
-        tabbedPane.addTab("Details", new DetailsPanel());
-
-        // Add tabbed pane to frame
-        add(tabbedPane);
-
         setExtendedState(JFrame.MAXIMIZED_BOTH);  // Make window maximized
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -37,6 +55,6 @@ public class MainGUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MainGUI());
+        SwingUtilities.invokeLater(MainGUI::new);
     }
 }
