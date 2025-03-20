@@ -9,8 +9,47 @@ class TablePanel extends JPanel {
     private DefaultTableModel tableModel;
     private String[] columnNames = {"URL", "Category", "Subcategory", "Description", "Reporter"};
     
+    // Add a field for the selection listener
+    private TableSelectionListener selectionListener;
+    
+    // Add this to the constructor after table initialization
+    public void setSelectionListener(TableSelectionListener listener) {
+        this.selectionListener = listener;
+        
+        // Add row selection listener with null check
+        table.getSelectionModel().addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting() && currentScamList != null) {  // Add null check here
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow >= 0) {
+                    // Convert view row index to model row index in case of sorting
+                    int modelRow = table.convertRowIndexToModel(selectedRow);
+                    
+                    
+                    // Get data from the selected row
+                    String url = tableModel.getValueAt(modelRow, 0).toString();
+                    
+                    // Find the matching scam
+                    for (ScamInstance scam : currentScamList) {
+                        if (scam.getName().equals(url)) {
+                            if (selectionListener != null) {
+                                selectionListener.onScamSelected(scam);
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    // Also add this field to keep track of the current list
+    private java.util.List<ScamInstance> currentScamList;
+    
     public TablePanel(List<ScamInstance> scamList) {
         super();
+        
+        // Initialize currentScamList first
+        this.currentScamList = scamList;
         
         // Create table model
         tableModel = new DefaultTableModel(columnNames, 0);
@@ -36,6 +75,7 @@ class TablePanel extends JPanel {
     }
     
     public void updateData(List<ScamInstance> scamList) {
+        this.currentScamList = scamList;
         // Clear existing data
         tableModel.setRowCount(0);
         
@@ -66,5 +106,10 @@ class TablePanel extends JPanel {
     
     public JTable getTable() {
         return table;
+    }
+    
+    // Add this interface
+    public interface TableSelectionListener {
+        void onScamSelected(ScamInstance scam);
     }
 }   

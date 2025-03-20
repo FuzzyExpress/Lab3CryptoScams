@@ -7,6 +7,7 @@ public class MainGUI extends JFrame {
     private TablePanel tablePanel;
     private java.util.List<ScamInstance> scamList;
     private java.util.List<ScamInstance> filteredScamList;
+    private DetailsPanel detailsPanel;
     
     public MainGUI() {
         // Main Window
@@ -24,8 +25,7 @@ public class MainGUI extends JFrame {
         ChartPanel chartPanel = new ChartPanel();
         chartPanel.add(new JLabel("Chart Panel"));
         
-        DetailsPanel detailsPanel = new DetailsPanel();
-        detailsPanel.add(new JLabel("Details Panel"));
+        detailsPanel = new DetailsPanel();
         
         // Get unique categories
         java.util.List<String> categories = scamList.stream()
@@ -107,6 +107,11 @@ public class MainGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
+
+        // After tablePanel is created, add:
+        tablePanel.setSelectionListener(scam -> {
+            detailsPanel.updateDetails(scam);
+        });
     }
 
     public static void main(String[] args) {
