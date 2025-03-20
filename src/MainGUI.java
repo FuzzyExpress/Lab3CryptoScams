@@ -11,7 +11,7 @@ public class MainGUI extends JFrame {
     
     public MainGUI() {
         // Main Window
-        setTitle("Crypto Scam Tracker");
+        setTitle("Crypto Scam Analysis Program");
         scamList = LoadData.loadData();
         filteredScamList = new java.util.ArrayList<>(scamList);
 
