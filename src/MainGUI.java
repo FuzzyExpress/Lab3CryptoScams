@@ -23,7 +23,7 @@ public class MainGUI extends JFrame {
         statsPanel.updateStats(scamList);
         
         ChartPanel chartPanel = new ChartPanel();
-        chartPanel.add(new JLabel("Chart Panel"));
+        chartPanel.updateChart(scamList); // Initial chart
         
         detailsPanel = new DetailsPanel();
         
@@ -67,6 +67,9 @@ public class MainGUI extends JFrame {
             
             // Update stats panel with filtered data
             statsPanel.updateStats(filteredScamList);
+            
+            // Update chart with filtered data
+            chartPanel.updateChart(filteredScamList);
         });
 
         // Create the main panel structure
